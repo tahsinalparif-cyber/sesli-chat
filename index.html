@@ -519,7 +519,7 @@ function joinChat(){
 
   /* 🔗 CRITICAL STEP: SOCKET CONNECTION 🔗
      Yükleme sonrasında "http://localhost:3000" yazan kısmı Render'ın sana vereceği https://... linkiyle değiştireceksin kanka. */
-  socket = io("http://localhost:3000");
+  socket = io("https://sesli-chat-gb66.onrender.com");
 
   // Odaya giriş yaptığımızı sunucuya bildiriyoruz
   socket.emit('join_room', { username: myName, room: myRoom });
