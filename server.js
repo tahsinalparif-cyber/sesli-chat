@@ -61,8 +61,12 @@ io.on('connection', (socket) => {
         io.to(toId).emit('vc_call_answer', { answer });
     });
 
-    socket.on('vc_ice', ({ candidate }) => {
-        socket.to(socket.currentRoom).emit('vc_call_ice', { candidate });
+    socket.on('vc_ice', ({ candidate, toId }) => {
+        if (toId) {
+            io.to(toId).emit('vc_call_ice', { candidate });
+        } else {
+            socket.to(socket.currentRoom).emit('vc_call_ice', { candidate });
+        }
     });
 
     socket.on('vc_end', () => {
